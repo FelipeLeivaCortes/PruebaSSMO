@@ -11,27 +11,27 @@ function register()
      * Checking all inputs required
      */
     if ( $('#rut').val() == '' ) {
-        swal('Error', 'Ingrese rut del funcionario', 'error');
+        Swal.fire('Error', 'Ingrese rut del funcionario', 'error');
         return;
     }
 
     if ( $('#name').val() == '' ) {
-        swal('Error', 'Ingrese nombre del funcionario', 'error');
+        Swal.fire('Error', 'Ingrese nombre del funcionario', 'error');
         return;
     }
 
     if ( $('#address').val() == '' ) {
-        swal('Error', 'Ingrese dirección del funcionario', 'error');
+        Swal.fire('Error', 'Ingrese dirección del funcionario', 'error');
         return;
     }
 
     if ( $('#birthday').val() == '' ) {
-        swal('Error', 'Ingrese fecha de nacimiento del funcionario', 'error');
+        Swal.fire('Error', 'Ingrese fecha de nacimiento del funcionario', 'error');
         return;
     }
 
     if ( $('#state').val() == null ) {
-        swal('Error', 'Seleccione estado del funcionario', 'error');
+        Swal.fire('Error', 'Seleccione estado del funcionario', 'error');
         return;
     }
 
@@ -57,17 +57,17 @@ function register()
 
     }).fail(function(error) {
         console.log(error);
-        swal('Error', 'Se ha producido un error con el servicio "register.php"', 'error');
+        Swal.fire('Error', 'Se ha producido un error con el servicio "register.php"', 'error');
     
     }).done(function(res) {
       //  console.clear();
         console.log(res);
 
         if ( res.error ) {
-            swal('Error', res.msg, 'error');
+            Swal.fire('Error', res.msg, 'error');
             return;
         }
 
-        swal('Operación Exitosa', res.msg, 'success');
+        Swal.fire('Operación Exitosa', res.msg, 'success');
     });
 }
