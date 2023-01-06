@@ -10,30 +10,30 @@ function register()
     /**
      * Checking all inputs required
      */
-    // if ( $('#rut').val() == '' ) {
-    //     swal('Error', 'Ingrese rut del funcionario', 'error');
-    //     return;
-    // }
+    if ( $('#rut').val() == '' ) {
+        swal('Error', 'Ingrese rut del funcionario', 'error');
+        return;
+    }
 
-    // if ( $('#name').val() == '' ) {
-    //     swal('Error', 'Ingrese nombre del funcionario', 'error');
-    //     return;
-    // }
+    if ( $('#name').val() == '' ) {
+        swal('Error', 'Ingrese nombre del funcionario', 'error');
+        return;
+    }
 
-    // if ( $('#address').val() == '' ) {
-    //     swal('Error', 'Ingrese dirección del funcionario', 'error');
-    //     return;
-    // }
+    if ( $('#address').val() == '' ) {
+        swal('Error', 'Ingrese dirección del funcionario', 'error');
+        return;
+    }
 
-    // if ( $('#birthday').val() == '' ) {
-    //     swal('Error', 'Ingrese fecha de nacimiento del funcionario', 'error');
-    //     return;
-    // }
+    if ( $('#birthday').val() == '' ) {
+        swal('Error', 'Ingrese fecha de nacimiento del funcionario', 'error');
+        return;
+    }
 
-    // if ( $('#state').val() == null ) {
-    //     swal('Error', 'Seleccione estado del funcionario', 'error');
-    //     return;
-    // }
+    if ( $('#state').val() == null ) {
+        swal('Error', 'Seleccione estado del funcionario', 'error');
+        return;
+    }
 
     /**
      * Encoding data
@@ -50,6 +50,7 @@ function register()
         url:            'services/register.php',
         type:           'POST',
         data:           data,
+        dataType:       'json',
         cache:          false,
         processData:    false,
         contentType:    false

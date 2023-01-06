@@ -12,20 +12,24 @@
         exit();
     }
 
-    $result = $mysqli->query("SELECT * FROM funcionarios;");
-    $row    = $result->fetch_array(MYSQLI_NUM);
 
-    if ($row) {
+    $stmt   = $mysqli->prepare("INSERT INTO funcionarios ('rut_funcionario', 'nombre_funcionario', 'direccion_funcionario',
+                                'fecha_nacimiento', 'estado_funcionario') VALUES (?, ?, ?, ?, ?);");
+    $stmt->bind_param('ssssb', $_POST['rut'], $_POST['name'], $_POST['address'], $_POST['birthday'], boolval($_POST['state']));
+
+    if (  $stmt->execute() ) {
         $RESPONSE['error']  = false;
         $RESPONSE['msg']    = 'Se ha registrado el funcionario exitosamente';
-        $RESPONSE['data']   = $row;
-        
-        echo json_encode($RESPONSE); 
-        
-        $result->free();
-        $mysqli->close();
+    
+    } else {
+        $RESPONSE['error']  = true;
+        $RESPONSE['msg']    = 'Se ha registrado el funcionario exitosamente';
 
-        exit();
     }
 
+    $RESPONSE['data']   = array();
+
+    echo json_encode($RESPONSE);
+        
+    $mysqli->close();
 ?>
